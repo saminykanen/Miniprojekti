@@ -66,13 +66,7 @@ public class Main {
         /* TITLE ASCII*/
         try (FileReader fr = new FileReader("title.txt");
              BufferedReader in = new BufferedReader(fr)) {
-            StringBuilder teksti = new StringBuilder();
-            String rivi;
-            while ((rivi = in.readLine()) != null) {
-                teksti.append(rivi).append("\n");
-            }
-            tulos = teksti.toString();
-            System.out.println(tulos);
+            stringinrakennus(in);
         } catch (FileNotFoundException ex) {
             System.out.println("Virhe: tiedostoa ei löytynyt");
         } catch (IOException ex) {
@@ -191,13 +185,7 @@ public class Main {
                 /* Zombie picture */
                 try (FileReader fr = new FileReader("zombie.txt");
                      BufferedReader in = new BufferedReader(fr)) {
-                    StringBuilder teksti = new StringBuilder();
-                    String rivi;
-                    while ((rivi = in.readLine()) != null) {
-                        teksti.append(rivi).append("\n");
-                    }
-                    tulos = teksti.toString();
-                    System.out.println(tulos);
+                    stringinrakennus(in);
                 } catch (FileNotFoundException ex) {
                     System.out.println("Virhe: tiedostoa ei löytynyt");
                 } catch (IOException ex) {
@@ -231,13 +219,7 @@ public class Main {
                             /* Game over ASCII if the player dies */
                             try (FileReader fr = new FileReader("gameover.txt");
                                  BufferedReader in = new BufferedReader(fr)) {
-                                StringBuilder teksti = new StringBuilder();
-                                String rivi;
-                                while ((rivi = in.readLine()) != null) {
-                                    teksti.append(rivi).append("\n");
-                                }
-                                tulos = teksti.toString();
-                                System.out.println(tulos);
+                                stringinrakennus(in);
                             } catch (FileNotFoundException ex) {
                                 System.out.println("Virhe: tiedostoa ei löytynyt");
                             } catch (IOException ex) {
@@ -266,19 +248,24 @@ public class Main {
             System.out.println("You were able to make fresh coffee and continue your Java project. Hopefully, you will remember that today, \n your bodycount on this road has risen by " + zombiecounter + ", \nCongratulations and best of luck in the future!");
             try (FileReader fr = new FileReader("end.txt");
                  BufferedReader in = new BufferedReader(fr)) {
-                StringBuilder teksti = new StringBuilder();
-                String rivi;
-                while ((rivi = in.readLine()) != null) {
-                    teksti.append(rivi).append("\n");
-                }
-                tulos = teksti.toString();
-                System.out.println(tulos);
+                stringinrakennus(in);
             } catch (FileNotFoundException ex) {
                 System.out.println("Virhe: tiedostoa ei löytynyt");
             } catch (IOException ex) {
                 System.out.println("Virhe: muu virhe lukiessa");
             }
         }
+    }
+
+    private static void stringinrakennus(BufferedReader in) throws IOException {
+        String tulos;
+        StringBuilder teksti = new StringBuilder();
+        String rivi;
+        while ((rivi = in.readLine()) != null) {
+            teksti.append(rivi).append("\n");
+        }
+        tulos = teksti.toString();
+        System.out.println(tulos);
     }
 }
 
